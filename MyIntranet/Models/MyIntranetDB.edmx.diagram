@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="9ebaa5f71a0740fb9b09919464210f35" Name="Diagram1">
+        <EntityTypeShape EntityType="MyIntranetDB.Department" Width="1.5" PointX="5.25" PointY="0.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="MyIntranetDB.User" Width="1.5" PointX="5.25" PointY="2.875" IsExpanded="true" />
+        <AssociationConnector Association="MyIntranetDB.FK_usersDepartment" ManuallyRouted="false" />
+        <EntityTypeShape EntityType="MyIntranetDB.UserComms" Width="1.5" PointX="7.375" PointY="5.375" />
+        <EntityTypeShape EntityType="MyIntranetDB.UserHr" Width="1.5" PointX="3.125" PointY="3.625" />
+        <AssociationConnector Association="MyIntranetDB.UserHrUser" />
+        <EntityTypeShape EntityType="MyIntranetDB.LeaveRequest" Width="1.5" PointX="1" PointY="5.75" />
+        <EntityTypeShape EntityType="MyIntranetDB.OfficeClosure" Width="1.5" PointX="9.5" PointY="3.125" />
+        <EntityTypeShape EntityType="MyIntranetDB.UserSocial" Width="1.5" PointX="5.25" PointY="7.625" />
+        <AssociationConnector Association="MyIntranetDB.UserSocialUser" />
+        <AssociationConnector Association="MyIntranetDB.UserCommsUser" />
+        <AssociationConnector Association="MyIntranetDB.UserHrLeaveRequest" />
+        <EntityTypeShape EntityType="MyIntranetDB.Config" Width="1.5" PointX="11.625" PointY="0.5" />
+        <EntityTypeShape EntityType="MyIntranetDB.AppSection" Width="1.5" PointX="9.5" PointY="0.5" />
+        <AssociationConnector Association="MyIntranetDB.AppSectionConfig" />
+        <EntityTypeShape EntityType="MyIntranetDB.UserHrDependencies" Width="1.5" PointX="3.125" PointY="7.25" />
+        <AssociationConnector Association="MyIntranetDB.UserHrDependenciesUserHr" />
+        <EntityTypeShape EntityType="MyIntranetDB.Absence" Width="1.5" PointX="1" PointY="2.75" />
+        <AssociationConnector Association="MyIntranetDB.AbsenceUserHr" />
+        <EntityTypeShape EntityType="MyIntranetDB.AbsenceReasons" Width="1.5" PointX="1" PointY="0.5" />
+        <AssociationConnector Association="MyIntranetDB.AbsenceReasonsAbsence" />
+        <EntityTypeShape EntityType="MyIntranetDB.UserRoles" Width="1.5" PointX="7.375" PointY="3.125" />
+        <EntityTypeShape EntityType="MyIntranetDB.Roles" Width="1.5" PointX="7.375" PointY="0.5" />
+        <AssociationConnector Association="MyIntranetDB.UserRolesUser" />
+        <AssociationConnector Association="MyIntranetDB.UserRolesRoles" />
+        <AssociationConnector Association="MyIntranetDB.RolesAppSection" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>
