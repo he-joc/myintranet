@@ -1,0 +1,17 @@
+﻿/*Primary colour scheme*/
+$primary-color: #07a68e;
+$primary-color-lighter: #4ec0b1;
+$primary-color-darker: #008471;
+
+/*UI elements colour scheme*/
+$warning-color: #ffa80b;
+$error-color: #f70a21;
+$print-color: #333333;
+
+$namespace: false;
+
+.round {	
+    border-radius: 50%;
+	-webkit-border-radius: 50%;
+	-moz-border-radius: 50%;
+}

@@ -1,0 +1,56 @@
+﻿@model MyIntranet.ViewModels.UserViewModel
+<div class="row">
+    <div class="columns large-9">
+        <h1>Staff - @ViewBag.department</h1>
+    </div>
+    <div class="columns large-3">
+        <a class="tasks white-bg right padding padding-5" data-dropdown="drop1" data-options="align:left" href="#">
+            <i class="fi-filter"></i>
+        </a>
+        @Html.Partial("DepartmentWidget",Model.Department)
+    </div>
+</div>
+<div class="row">
+    <div class="columns large-12">
+        <ul class="breadcrumbs">
+            <li><i class="fi-home left"></i><a href="~/">Home</a></li>
+            <li>Staff</li>
+        </ul>
+    </div>
+</div>
+<div class="alert-box" data-alert>
+    <i class="fi-check left"></i>
+    <p></p>
+    <a class="close" href="#">&times;</a>
+</div>
+<div class="row" data-equalizer>
+    <div class="columns large-12" data-equalizer-watch>
+        <div class="fill white-bg padding padding-20">
+            <div class="row">
+                <div class="columns large-12 white-bg padding top-bottom">
+                    <h2 class="green-prim">Staff Directory</h2>
+                </div>
+            </div>
+            <div class="row">
+                @foreach(MyIntranet.Models.User u in Model.User) 
+                {
+                <div class="columns large-3 white-bg left padding padding-20 top-bottom mini-profile">
+                    <h5>
+                        <img class="round img-user large left" src="~/Content/Images/@u.FirstName.ToLower()@(u.LastName.ToLower()).jpg" />
+                        @u.FirstName @u.LastName
+                    </h5>
+                    <div>
+                        <p>@u.Title</p>
+                        <p><i class="fi-telephone left"></i>@u.UserComm.Extension</p>
+                    </div>
+                </div>
+                }
+            </div>
+        </div>
+    </div>
+</div>		
+
+
+
+
+

@@ -1,0 +1,58 @@
+﻿@model MyIntranet.Models.LeaveRequest
+<div class="row">
+    <div class="column large-12">
+        <div class="row">
+            <div class="column large-12 small-12">
+                <h1>Create User</h1>
+            </div>
+        </div>
+        @if (ViewBag.Errors != null)
+        {
+            foreach (String s in ViewBag.Errors)
+            {
+                <div data-alert class="alert-box alert" tabindex="0">
+                    @s
+                    <button href="#" tabindex="0" class="close">&times;</button>
+                </div>
+            }
+        }
+
+        @using (Html.BeginForm())
+        {
+            @Html.AntiForgeryToken()
+            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+            <div class="row">
+                <div class="large-6 medium-6 small-12 columns">
+                    @Html.LabelFor(model => model.StartDate, htmlAttributes: new { @class = "right-label" })
+                    @Html.EditorFor(model => model.StartDate, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.StartDate, "", new { @class = "text-danger" })
+                </div>
+                <div class="large-6 medium-6 small-12 columns">
+                    @Html.LabelFor(model => model.StartHalfDay, htmlAttributes: new { @class = "right-label" })
+                    @Html.DropDownList("StartHalfDay", ViewBag.StartHalfDay as List<SelectListItem>, htmlAttributes: new { @class = "form-control" })
+                    @Html.ValidationMessageFor(model => model.StartHalfDay, "", new { @class = "text-danger" })
+                </div>
+            </div>
+            <div class="row">
+                <div class="large-6 medium-6 small-12 columns">
+                    @Html.LabelFor(model => model.EndDate, htmlAttributes: new { @class = "right-label" })
+                    @Html.EditorFor(model => model.EndDate, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.EndDate, "", new { @class = "text-danger" })
+                </div>
+                <div class="large-6 medium-6 small-12 columns">
+                    @Html.LabelFor(model => model.StartHalfDay, htmlAttributes: new { @class = "right-label" })
+                    @Html.DropDownList("EndHalfDay", ViewBag.StartHalfDay as List<SelectListItem>, htmlAttributes: new { @class = "form-control" })
+                    @Html.ValidationMessageFor(model => model.StartHalfDay, "", new { @class = "text-danger" })
+                    @Html.Hidden("UserHrId", @Session["UserHrId"])
+                </div>
+            </div>
+            <div class="row">
+                <div class="column large-12">
+                    <input type="submit" name="submit" class="small radius button" value="Submit" />
+
+                </div>
+            </div>
+        }
+    </div>
+</div>
+

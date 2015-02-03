@@ -1,0 +1,139 @@
+﻿@model MyIntranet.Models.User
+<div class="row">
+    <div class="column large-12">
+        <div class="row">
+            <div class="column large-12 small-12">
+                <h1>Create User</h1>
+            </div>
+        </div>
+        @using (Html.BeginForm())
+        {
+            @Html.AntiForgeryToken()
+            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+            <div class="row">
+                <div class="large-6 medium-6 small-12 columns">
+                    @Html.LabelFor(model => model.FirstName, htmlAttributes: new { @class = "right-label" })
+                    @Html.EditorFor(model => model.FirstName, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.FirstName, "", new { @class = "text-danger" })
+                </div>
+                <div class="large-6 medium-6 small-12 columns">
+                    @Html.LabelFor(model => model.LastName, htmlAttributes: new { @class = "right-label" })
+                    @Html.EditorFor(model => model.LastName, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.LastName, "", new { @class = "text-danger" })
+                </div>
+            </div>
+            <div class="row">
+                <div class="large-6 medium-6 small-12 columns">
+                    @Html.LabelFor(model => model.DepartmentId, "DepartmentId", htmlAttributes: new { @class = "right-label" })
+                    @Html.DropDownListFor(model => model.DepartmentId, ViewBag.DepartmentId as List<SelectListItem>, htmlAttributes: new { @class = "form-control" })
+                    @Html.ValidationMessageFor(model => model.DepartmentId, "", new { @class = "text-danger" })
+                </div>
+                <div class="large-6 medium-6 small-12 columns">
+                    @Html.LabelFor(model => model.Gender, htmlAttributes: new { @class = "right-label" })
+                    @Html.EditorFor(model => model.Gender, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.Gender, "", new { @class = "text-danger" })
+                </div>
+            </div>
+            <div class="row">
+                <div class="large-6 medium-6 small-12 columns">
+                    @Html.LabelFor(model => model.Title, htmlAttributes: new { @class = "right-label" })
+                    @Html.EditorFor(model => model.Title, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.Title, "", new { @class = "text-danger" })
+                </div>
+                <div class="large-6 medium-6 small-12 columns">
+                    @Html.LabelFor(model => model.DateOfBirth, htmlAttributes: new { @class = "right-label" })
+                    @Html.EditorFor(model => model.DateOfBirth, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.DateOfBirth, "", new { @class = "text-danger" })
+                </div>
+            </div>
+            <div class="row">
+                <div class="large-6 medium-6 small-12 columns">
+                    @Html.LabelFor(model => model.UserName, htmlAttributes: new { @class = "right-label" })
+                    @Html.EditorFor(model => model.UserName, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.UserName, "", new { @class = "text-danger" })
+                </div>
+                <div class="large-6 medium-6 small-12 columns">
+                    @Html.LabelFor(model => model.Active, htmlAttributes: new { @class = "right-label" })
+                    @Html.EditorFor(model => model.Active)
+                    @Html.ValidationMessageFor(model => model.Active, "", new { @class = "text-danger" })
+                </div>
+            </div>
+            <div class="row">
+                <div class="large-6 medium-6 small-12 columns">
+                    @Html.LabelFor(model => model.DateStarted, htmlAttributes: new { @class = "right-label" })
+                    @Html.EditorFor(model => model.DateStarted, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.DateStarted, "", new { @class = "text-danger" })
+                </div>
+                <div class="large-6 medium-6 small-12 columns">
+                    @Html.LabelFor(model => model.UserHr.ContractedHours, htmlAttributes: new { @class = "right-label" })
+                    @Html.EditorFor(model => model.UserHr.ContractedHours, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.UserHr.ContractedHours, "", new { @class = "text-danger" })
+                </div>
+            </div>
+            <div class="row">
+                <div class="large-6 medium-6 small-12 columns">
+                    @Html.LabelFor(model => model.UserHr.Salary, htmlAttributes: new { @class = "right-label" })
+                    @Html.EditorFor(model => model.UserHr.Salary, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.UserHr.Salary, "", new { @class = "text-danger" })
+                </div>
+                <div class="large-6 medium-6 small-12 columns">
+                    @Html.LabelFor(model => model.UserHr.ShiftPattern, htmlAttributes: new { @class = "right-label" })
+                    @Html.EditorFor(model => model.UserHr.ShiftPattern, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.UserHr.ShiftPattern, "", new { @class = "text-danger" })
+                </div>
+            </div>
+            <div class="row">
+                <div class="large-6 medium-6 small-12 columns">
+                    @Html.LabelFor(model => model.UserHr.LeaveThisYear, htmlAttributes: new { @class = "right-label" })
+                    @Html.EditorFor(model => model.UserHr.LeaveThisYear, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.UserHr.LeaveThisYear, "", new { @class = "text-danger" })
+                </div>
+                <div class="large-6 medium-6 small-12 columns">
+                    @Html.LabelFor(model => model.UserHr.LeaveNextYear, htmlAttributes: new { @class = "right-label" })
+                    @Html.EditorFor(model => model.UserHr.LeaveNextYear, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.UserHr.LeaveNextYear, "", new { @class = "text-danger" })
+                </div>
+            </div>
+            <div class="row">
+                <div class="large-6 medium-6 small-12 columns">
+                    @Html.LabelFor(model => model.UserHr.LeaveSupervisor, htmlAttributes: new { @class = "right-label" })
+                    @Html.DropDownListFor(model => model.UserHr.LeaveSupervisor, ViewBag.LeaveSupervisor as List<SelectListItem>, htmlAttributes: new { @class = "form-control" })
+                    @Html.ValidationMessageFor(model => model.UserHr.LeaveSupervisor, "", new { @class = "text-danger" })
+                </div>
+                <div class="large-6 medium-6 small-12 columns">
+                    @Html.LabelFor(model => model.UserComm.Extension, htmlAttributes: new { @class = "right-label" })
+                    @Html.EditorFor(model => model.UserComm.Extension, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.UserComm.Extension, "", new { @class = "text-danger" })
+                </div>
+            </div>
+            <div class="row">
+                <div class="large-6 medium-6 small-12 columns">
+                    @Html.LabelFor(model => model.UserComm.DDI, htmlAttributes: new { @class = "right-label" })
+                    @Html.EditorFor(model => model.UserComm.DDI, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.UserComm.DDI, "", new { @class = "text-danger" })
+                </div>
+                <div class="large-6 medium-6 small-12 columns">
+                    @Html.LabelFor(model => model.UserComm.Email, htmlAttributes: new { @class = "right-label" })
+                    @Html.EditorFor(model => model.UserComm.Email, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.UserComm.Email, "", new { @class = "text-danger" })
+                </div>
+            </div>
+            <div class="row">
+                <div class="large-6 medium-6 small-12 columns">
+                    @Html.LabelFor(model => model.UserSocial.Fact, htmlAttributes: new { @class = "right-label" })
+                    @Html.EditorFor(model => model.UserSocial.Fact, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.UserSocial.Fact, "", new { @class = "text-danger" })
+                </div>
+                <div class="large-6 medium-6 small-12 columns">
+
+                </div>
+            </div>
+            <div class="row">
+                <div class="column large-12">
+                    <input type="submit" name="submit" class="small radius button" value="Submit" />
+
+                </div>
+            </div>
+        }
+    </div>
+</div>

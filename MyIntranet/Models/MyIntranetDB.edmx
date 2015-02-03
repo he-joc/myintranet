@@ -1,0 +1,898 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="MyIntranetDB.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2012" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityContainer Name="MyIntranetDBStoreContainer">
+    <EntitySet Name="Departments" EntityType="MyIntranetDB.Store.Departments" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Users" EntityType="MyIntranetDB.Store.Users" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="UserComms" EntityType="MyIntranetDB.Store.UserComms" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="UserHrs" EntityType="MyIntranetDB.Store.UserHrs" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="LeaveRequests" EntityType="MyIntranetDB.Store.LeaveRequests" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="OfficeClosures" EntityType="MyIntranetDB.Store.OfficeClosures" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="UserSocials" EntityType="MyIntranetDB.Store.UserSocials" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Configs" EntityType="MyIntranetDB.Store.Configs" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="AppSections" EntityType="MyIntranetDB.Store.AppSections" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="UserHrDependencies" EntityType="MyIntranetDB.Store.UserHrDependencies" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Absences" EntityType="MyIntranetDB.Store.Absences" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="AbsenceReasons" EntityType="MyIntranetDB.Store.AbsenceReasons" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="UserRoles" EntityType="MyIntranetDB.Store.UserRoles" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Roles" EntityType="MyIntranetDB.Store.Roles" store:Type="Tables" Schema="dbo" />
+    <AssociationSet Name="FK_usersDepartment" Association="MyIntranetDB.Store.FK_usersDepartment">
+      <End Role="Departments" EntitySet="Departments" />
+      <End Role="Users" EntitySet="Users" />
+    </AssociationSet>
+    <AssociationSet Name="UserHrUser" Association="MyIntranetDB.Store.UserHrUser">
+      <End Role="UserHr" EntitySet="UserHrs" />
+      <End Role="User" EntitySet="Users" />
+    </AssociationSet>
+    <AssociationSet Name="UserSocialUser" Association="MyIntranetDB.Store.UserSocialUser">
+      <End Role="UserSocial" EntitySet="UserSocials" />
+      <End Role="User" EntitySet="Users" />
+    </AssociationSet>
+    <AssociationSet Name="UserCommsUser" Association="MyIntranetDB.Store.UserCommsUser">
+      <End Role="UserComms" EntitySet="UserComms" />
+      <End Role="User" EntitySet="Users" />
+    </AssociationSet>
+    <AssociationSet Name="UserHrLeaveRequest" Association="MyIntranetDB.Store.UserHrLeaveRequest">
+      <End Role="UserHr" EntitySet="UserHrs" />
+      <End Role="LeaveRequest" EntitySet="LeaveRequests" />
+    </AssociationSet>
+    <AssociationSet Name="AppSectionConfig" Association="MyIntranetDB.Store.AppSectionConfig">
+      <End Role="AppSection" EntitySet="AppSections" />
+      <End Role="Config" EntitySet="Configs" />
+    </AssociationSet>
+    <AssociationSet Name="UserHrDependenciesUserHr" Association="MyIntranetDB.Store.UserHrDependenciesUserHr">
+      <End Role="UserHr" EntitySet="UserHrs" />
+      <End Role="UserHrDependencies" EntitySet="UserHrDependencies" />
+    </AssociationSet>
+    <AssociationSet Name="AbsenceUserHr" Association="MyIntranetDB.Store.AbsenceUserHr">
+      <End Role="Absence" EntitySet="Absences" />
+      <End Role="UserHr" EntitySet="UserHrs" />
+    </AssociationSet>
+    <AssociationSet Name="AbsenceReasonsAbsence" Association="MyIntranetDB.Store.AbsenceReasonsAbsence">
+      <End Role="AbsenceReasons" EntitySet="AbsenceReasons" />
+      <End Role="Absence" EntitySet="Absences" />
+    </AssociationSet>
+    <AssociationSet Name="UserRolesUser" Association="MyIntranetDB.Store.UserRolesUser">
+      <End Role="UserRoles" EntitySet="UserRoles" />
+      <End Role="User" EntitySet="Users" />
+    </AssociationSet>
+    <AssociationSet Name="UserRolesRoles" Association="MyIntranetDB.Store.UserRolesRoles">
+      <End Role="UserRoles" EntitySet="UserRoles" />
+      <End Role="Roles" EntitySet="Roles" />
+    </AssociationSet>
+    <AssociationSet Name="RolesAppSection" Association="MyIntranetDB.Store.RolesAppSection">
+      <End Role="Roles" EntitySet="Roles" />
+      <End Role="AppSection" EntitySet="AppSections" />
+    </AssociationSet>
+  </EntityContainer>
+  <EntityType Name="Departments">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Name" Type="nvarchar(max)" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Users">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="FirstName" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="LastName" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="DepartmentId" Type="int" Nullable="false" />
+    <Property Name="Gender" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="Title" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="DateOfBirth" Type="datetime" Nullable="false" />
+    <Property Name="UserName" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="Active" Type="bit" Nullable="false" />
+    <Property Name="DateStarted" Type="datetime" Nullable="false" />
+    <Property Name="DateLeft" Type="datetime" Nullable="true" />
+    <Property Name="DateLastLogin" Type="datetime" Nullable="true" />
+  </EntityType>
+  <EntityType Name="UserComms">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Extension" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="DDI" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="Email" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="User_Id" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="UserHrs">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="ContractedHours" Type="decimal" Nullable="false" Precision="18" Scale="0" />
+    <Property Name="Salary" Type="decimal" Nullable="false" Precision="18" Scale="0" />
+    <Property Name="ShiftPattern" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="LeaveThisYear" Type="smallint" Nullable="false" />
+    <Property Name="LeaveNextYear" Type="smallint" Nullable="false" />
+    <Property Name="LeaveSupervisor" Type="int" Nullable="false" />
+    <Property Name="User_Id" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="LeaveRequests">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="StartDate" Type="datetime" Nullable="false" />
+    <Property Name="EndDate" Type="datetime" Nullable="false" />
+    <Property Name="StartHalfDay" Type="nvarchar(max)" Nullable="true" />
+    <Property Name="EndHalfDay" Type="nvarchar(max)" Nullable="true" />
+    <Property Name="HrApproved" Type="bit" Nullable="true" />
+    <Property Name="SupervisorApproved" Type="bit" Nullable="true" />
+    <Property Name="DateRequested" Type="datetime" Nullable="false" />
+    <Property Name="Days" Type="decimal" Nullable="false" Precision="18" Scale="0" />
+    <Property Name="UserHrId" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="OfficeClosures">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Date" Type="datetime" Nullable="false" />
+    <Property Name="Name" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="BankHoliday" Type="bit" Nullable="false" DefaultValue="true" />
+  </EntityType>
+  <EntityType Name="UserSocials">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Fact" Type="nvarchar(max)" Nullable="true" />
+    <Property Name="User_Id" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Configs">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Name" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="Value" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="AppSectionId" Type="int" Nullable="false" />
+    <Property Name="Description" Type="nvarchar(max)" Nullable="false" />
+  </EntityType>
+  <EntityType Name="AppSections">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Name" Type="nvarchar(max)" Nullable="false" />
+  </EntityType>
+  <EntityType Name="UserHrDependencies">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="UserHrId" Type="int" Nullable="false" />
+    <Property Name="UserHr_Id" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Absences">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="UserHrId" Type="int" Nullable="false" />
+    <Property Name="StartDate" Type="datetime" Nullable="false" />
+    <Property Name="EndDate" Type="datetime" Nullable="false" />
+    <Property Name="Days" Type="decimal" Nullable="false" />
+    <Property Name="AbsenceReasonsId" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="AbsenceReasons">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Description" Type="nvarchar(max)" Nullable="false" />
+  </EntityType>
+  <EntityType Name="UserRoles">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="UserId" Type="int" Nullable="false" />
+    <Property Name="Role_Id" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Roles">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="RoleName" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="AppSectionId" Type="int" Nullable="false" />
+  </EntityType>
+  <Association Name="FK_usersDepartment">
+    <End Role="Departments" Type="MyIntranetDB.Store.Departments" Multiplicity="1" />
+    <End Role="Users" Type="MyIntranetDB.Store.Users" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Departments">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Users">
+        <PropertyRef Name="DepartmentId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="UserHrUser">
+    <End Role="UserHr" Type="MyIntranetDB.Store.UserHrs" Multiplicity="*" />
+    <End Role="User" Type="MyIntranetDB.Store.Users" Multiplicity="1" />
+    <ReferentialConstraint>
+      <Principal Role="User">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="UserHr">
+        <PropertyRef Name="User_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="UserSocialUser">
+    <End Role="UserSocial" Type="MyIntranetDB.Store.UserSocials" Multiplicity="*" />
+    <End Role="User" Type="MyIntranetDB.Store.Users" Multiplicity="1" />
+    <ReferentialConstraint>
+      <Principal Role="User">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="UserSocial">
+        <PropertyRef Name="User_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="UserCommsUser">
+    <End Role="UserComms" Type="MyIntranetDB.Store.UserComms" Multiplicity="*" />
+    <End Role="User" Type="MyIntranetDB.Store.Users" Multiplicity="1" />
+    <ReferentialConstraint>
+      <Principal Role="User">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="UserComms">
+        <PropertyRef Name="User_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="UserHrLeaveRequest">
+    <End Role="UserHr" Type="MyIntranetDB.Store.UserHrs" Multiplicity="1" />
+    <End Role="LeaveRequest" Type="MyIntranetDB.Store.LeaveRequests" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="UserHr">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="LeaveRequest">
+        <PropertyRef Name="UserHrId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="AppSectionConfig">
+    <End Role="AppSection" Type="MyIntranetDB.Store.AppSections" Multiplicity="1" />
+    <End Role="Config" Type="MyIntranetDB.Store.Configs" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="AppSection">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Config">
+        <PropertyRef Name="AppSectionId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="UserHrDependenciesUserHr">
+    <End Role="UserHr" Type="MyIntranetDB.Store.UserHrs" Multiplicity="1" />
+    <End Role="UserHrDependencies" Type="MyIntranetDB.Store.UserHrDependencies" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="UserHr">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="UserHrDependencies">
+        <PropertyRef Name="UserHr_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="AbsenceUserHr">
+    <End Role="Absence" Type="MyIntranetDB.Store.Absences" Multiplicity="*" />
+    <End Role="UserHr" Type="MyIntranetDB.Store.UserHrs" Multiplicity="1" />
+    <ReferentialConstraint>
+      <Principal Role="UserHr">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Absence">
+        <PropertyRef Name="UserHrId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="AbsenceReasonsAbsence">
+    <End Role="AbsenceReasons" Type="MyIntranetDB.Store.AbsenceReasons" Multiplicity="1" />
+    <End Role="Absence" Type="MyIntranetDB.Store.Absences" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="AbsenceReasons">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Absence">
+        <PropertyRef Name="AbsenceReasonsId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="UserRolesUser">
+    <End Role="UserRoles" Type="MyIntranetDB.Store.UserRoles" Multiplicity="*" />
+    <End Role="User" Type="MyIntranetDB.Store.Users" Multiplicity="1" />
+    <ReferentialConstraint>
+      <Principal Role="User">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="UserRoles">
+        <PropertyRef Name="UserId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="UserRolesRoles">
+    <End Role="UserRoles" Type="MyIntranetDB.Store.UserRoles" Multiplicity="*" />
+    <End Role="Roles" Type="MyIntranetDB.Store.Roles" Multiplicity="1" />
+    <ReferentialConstraint>
+      <Principal Role="Roles">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="UserRoles">
+        <PropertyRef Name="Role_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="RolesAppSection">
+    <End Role="Roles" Type="MyIntranetDB.Store.Roles" Multiplicity="*" />
+    <End Role="AppSection" Type="MyIntranetDB.Store.AppSections" Multiplicity="1" />
+    <ReferentialConstraint>
+      <Principal Role="AppSection">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Roles">
+        <PropertyRef Name="AppSectionId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+</Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="MyIntranetDB" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="Department">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="Users" Relationship="Self.FK_usersDepartment" FromRole="Departments" ToRole="Users" />
+        </EntityType>
+        <EntityType Name="User">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="FirstName" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="LastName" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="DepartmentId" Type="Int32" Nullable="false" />
+          <Property Name="Gender" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Title" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="DateOfBirth" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="UserName" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Active" Type="Boolean" Nullable="false" />
+          <Property Name="DateStarted" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="DateLeft" Type="DateTime" Nullable="true" Precision="3" />
+          <Property Name="DateLastLogin" Type="DateTime" Nullable="true" Precision="3" />
+          <NavigationProperty Name="Department" Relationship="Self.FK_usersDepartment" FromRole="Users" ToRole="Departments" />
+          <NavigationProperty Name="UserHr" Relationship="MyIntranetDB.UserHrUser" FromRole="User" ToRole="UserHr" />
+          <NavigationProperty Name="UserSocial" Relationship="MyIntranetDB.UserSocialUser" FromRole="User" ToRole="UserSocial" />
+          <NavigationProperty Name="UserComm" Relationship="MyIntranetDB.UserCommsUser" FromRole="User" ToRole="UserComms" />
+          <NavigationProperty Name="UserRoles" Relationship="MyIntranetDB.UserRolesUser" FromRole="User" ToRole="UserRoles" />
+        </EntityType>
+        <Association Name="FK_usersDepartment">
+          <End Role="Departments" Type="Self.Department" Multiplicity="1" />
+          <End Role="Users" Type="Self.User" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Departments">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Users">
+              <PropertyRef Name="DepartmentId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="MyIntranetEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Departments" EntityType="Self.Department" />
+          <EntitySet Name="Users" EntityType="Self.User" />
+          <AssociationSet Name="FK_usersDepartment" Association="Self.FK_usersDepartment">
+            <End Role="Departments" EntitySet="Departments" />
+            <End Role="Users" EntitySet="Users" />
+          </AssociationSet>
+          <EntitySet Name="UserComms" EntityType="MyIntranetDB.UserComms" />
+          <EntitySet Name="UserHrs" EntityType="MyIntranetDB.UserHr" />
+          <AssociationSet Name="UserHrUser" Association="MyIntranetDB.UserHrUser">
+            <End Role="UserHr" EntitySet="UserHrs" />
+            <End Role="User" EntitySet="Users" />
+          </AssociationSet>
+          <EntitySet Name="LeaveRequests" EntityType="MyIntranetDB.LeaveRequest" />
+          <EntitySet Name="OfficeClosures" EntityType="MyIntranetDB.OfficeClosure" />
+          <EntitySet Name="UserSocials" EntityType="MyIntranetDB.UserSocial" />
+          <AssociationSet Name="UserSocialUser" Association="MyIntranetDB.UserSocialUser">
+            <End Role="UserSocial" EntitySet="UserSocials" />
+            <End Role="User" EntitySet="Users" />
+          </AssociationSet>
+          <AssociationSet Name="UserCommsUser" Association="MyIntranetDB.UserCommsUser">
+            <End Role="UserComms" EntitySet="UserComms" />
+            <End Role="User" EntitySet="Users" />
+          </AssociationSet>
+          <AssociationSet Name="UserHrLeaveRequest" Association="MyIntranetDB.UserHrLeaveRequest">
+            <End Role="UserHr" EntitySet="UserHrs" />
+            <End Role="LeaveRequest" EntitySet="LeaveRequests" />
+          </AssociationSet>
+          <EntitySet Name="Configs" EntityType="MyIntranetDB.Config" />
+          <EntitySet Name="AppSections" EntityType="MyIntranetDB.AppSection" />
+          <AssociationSet Name="AppSectionConfig" Association="MyIntranetDB.AppSectionConfig">
+            <End Role="AppSection" EntitySet="AppSections" />
+            <End Role="Config" EntitySet="Configs" />
+          </AssociationSet>
+          <EntitySet Name="UserHrDependencies" EntityType="MyIntranetDB.UserHrDependencies" />
+          <AssociationSet Name="UserHrDependenciesUserHr" Association="MyIntranetDB.UserHrDependenciesUserHr">
+            <End Role="UserHr" EntitySet="UserHrs" />
+            <End Role="UserHrDependencies" EntitySet="UserHrDependencies" />
+          </AssociationSet>
+          <EntitySet Name="Absences" EntityType="MyIntranetDB.Absence" />
+          <AssociationSet Name="AbsenceUserHr" Association="MyIntranetDB.AbsenceUserHr">
+            <End Role="Absence" EntitySet="Absences" />
+            <End Role="UserHr" EntitySet="UserHrs" />
+          </AssociationSet>
+          <EntitySet Name="AbsenceReasons" EntityType="MyIntranetDB.AbsenceReasons" />
+          <AssociationSet Name="AbsenceReasonsAbsence" Association="MyIntranetDB.AbsenceReasonsAbsence">
+            <End Role="AbsenceReasons" EntitySet="AbsenceReasons" />
+            <End Role="Absence" EntitySet="Absences" />
+          </AssociationSet>
+          <EntitySet Name="UserRoles" EntityType="MyIntranetDB.UserRoles" />
+          <EntitySet Name="Roles" EntityType="MyIntranetDB.Roles" />
+          <AssociationSet Name="UserRolesUser" Association="MyIntranetDB.UserRolesUser">
+            <End Role="UserRoles" EntitySet="UserRoles" />
+            <End Role="User" EntitySet="Users" />
+          </AssociationSet>
+          <AssociationSet Name="UserRolesRoles" Association="MyIntranetDB.UserRolesRoles">
+            <End Role="UserRoles" EntitySet="UserRoles" />
+            <End Role="Roles" EntitySet="Roles" />
+          </AssociationSet>
+          <AssociationSet Name="RolesAppSection" Association="MyIntranetDB.RolesAppSection">
+            <End Role="Roles" EntitySet="Roles" />
+            <End Role="AppSection" EntitySet="AppSections" />
+          </AssociationSet>
+        </EntityContainer>
+        <EntityType Name="UserComms">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Extension" Type="String" Nullable="false" MaxLength="Max" Unicode="true" FixedLength="false" />
+          <Property Name="DDI" Type="String" Nullable="false" MaxLength="Max" Unicode="true" FixedLength="false" />
+          <Property Name="Email" Type="String" Nullable="false" MaxLength="Max" Unicode="true" FixedLength="false" />
+          <NavigationProperty Name="User" Relationship="MyIntranetDB.UserCommsUser" FromRole="UserComms" ToRole="User" />
+        </EntityType>
+        <EntityType Name="UserHr">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ContractedHours" Type="Decimal" Nullable="false" Precision="18" Scale="0" />
+          <Property Name="Salary" Type="Decimal" Nullable="false" Precision="18" Scale="0" />
+          <Property Name="ShiftPattern" Type="String" Nullable="false" MaxLength="Max" Unicode="true" FixedLength="false" />
+          <NavigationProperty Name="User" Relationship="MyIntranetDB.UserHrUser" FromRole="UserHr" ToRole="User" />
+          <Property Name="LeaveThisYear" Type="Int16" Nullable="false" />
+          <Property Name="LeaveNextYear" Type="Int16" Nullable="false" />
+          <Property Name="LeaveSupervisor" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="LeaveRequests" Relationship="MyIntranetDB.UserHrLeaveRequest" FromRole="UserHr" ToRole="LeaveRequest" />
+          <NavigationProperty Name="UserHrDependencies" Relationship="MyIntranetDB.UserHrDependenciesUserHr" FromRole="UserHr" ToRole="UserHrDependencies" />
+          <NavigationProperty Name="Absences" Relationship="MyIntranetDB.AbsenceUserHr" FromRole="UserHr" ToRole="Absence" />
+        </EntityType>
+        <Association Name="UserHrUser">
+          <End Type="MyIntranetDB.UserHr" Role="UserHr" Multiplicity="1" />
+          <End Type="MyIntranetDB.User" Role="User" Multiplicity="1" />
+        </Association>
+        <EntityType Name="LeaveRequest">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="StartDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="EndDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="StartHalfDay" Type="String" Nullable="true" MaxLength="Max" Unicode="true" FixedLength="false" />
+          <Property Name="EndHalfDay" Type="String" Nullable="true" MaxLength="Max" Unicode="true" FixedLength="false" />
+          <Property Name="HrApproved" Type="Boolean" Nullable="true" />
+          <Property Name="SupervisorApproved" Type="Boolean" Nullable="true" />
+          <Property Name="DateRequested" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="Days" Type="Decimal" Nullable="false" Precision="18" Scale="0" />
+          <NavigationProperty Name="UserHr" Relationship="MyIntranetDB.UserHrLeaveRequest" FromRole="LeaveRequest" ToRole="UserHr" />
+          <Property Name="UserHrId" Type="Int32" Nullable="false" />
+        </EntityType>
+        <EntityType Name="OfficeClosure">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Date" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="Name" Type="String" Nullable="false" MaxLength="Max" Unicode="true" FixedLength="false" />
+          <Property Name="BankHoliday" Type="Boolean" Nullable="false" DefaultValue="true" />
+        </EntityType>
+        <EntityType Name="UserSocial">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Fact" Type="String" Nullable="true" MaxLength="Max" Unicode="true" FixedLength="false" />
+          <NavigationProperty Name="User" Relationship="MyIntranetDB.UserSocialUser" FromRole="UserSocial" ToRole="User" />
+        </EntityType>
+        <Association Name="UserSocialUser">
+          <End Type="MyIntranetDB.UserSocial" Role="UserSocial" Multiplicity="1" />
+          <End Type="MyIntranetDB.User" Role="User" Multiplicity="1" />
+        </Association>
+        <Association Name="UserCommsUser">
+          <End Type="MyIntranetDB.UserComms" Role="UserComms" Multiplicity="1" />
+          <End Type="MyIntranetDB.User" Role="User" Multiplicity="1" />
+        </Association>
+        <Association Name="UserHrLeaveRequest">
+          <End Type="MyIntranetDB.UserHr" Role="UserHr" Multiplicity="1" />
+          <End Type="MyIntranetDB.LeaveRequest" Role="LeaveRequest" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="UserHr">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="LeaveRequest">
+              <PropertyRef Name="UserHrId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="Config">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" Nullable="false" MaxLength="Max" Unicode="true" FixedLength="false" />
+          <Property Name="Value" Type="String" Nullable="false" MaxLength="Max" Unicode="true" FixedLength="false" />
+          <NavigationProperty Name="AppSection" Relationship="MyIntranetDB.AppSectionConfig" FromRole="Config" ToRole="AppSection" />
+          <Property Name="AppSectionId" Type="Int32" Nullable="false" />
+          <Property Name="Description" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="AppSection">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" Nullable="false" MaxLength="Max" Unicode="true" FixedLength="false" />
+          <NavigationProperty Name="Configs" Relationship="MyIntranetDB.AppSectionConfig" FromRole="AppSection" ToRole="Config" />
+          <NavigationProperty Name="Roles" Relationship="MyIntranetDB.RolesAppSection" FromRole="AppSection" ToRole="Roles" />
+        </EntityType>
+        <Association Name="AppSectionConfig">
+          <End Type="MyIntranetDB.AppSection" Role="AppSection" Multiplicity="1" />
+          <End Type="MyIntranetDB.Config" Role="Config" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AppSection">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Config">
+              <PropertyRef Name="AppSectionId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="UserHrDependencies">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <NavigationProperty Name="UserHr" Relationship="MyIntranetDB.UserHrDependenciesUserHr" FromRole="UserHrDependencies" ToRole="UserHr" />
+          <Property Name="UserHrId" Type="Int32" Nullable="false" />
+        </EntityType>
+        <Association Name="UserHrDependenciesUserHr">
+          <End Type="MyIntranetDB.UserHr" Role="UserHr" Multiplicity="1" />
+          <End Type="MyIntranetDB.UserHrDependencies" Role="UserHrDependencies" Multiplicity="*" />
+        </Association>
+        <EntityType Name="Absence">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <NavigationProperty Name="UserHr" Relationship="MyIntranetDB.AbsenceUserHr" FromRole="Absence" ToRole="UserHr" />
+          <Property Name="UserHrId" Type="Int32" Nullable="false" />
+          <Property Name="StartDate" Type="DateTime" Nullable="false" />
+          <Property Name="EndDate" Type="DateTime" Nullable="false" />
+          <Property Name="Days" Type="Decimal" Nullable="false" />
+          <NavigationProperty Name="AbsenceReason" Relationship="MyIntranetDB.AbsenceReasonsAbsence" FromRole="Absence" ToRole="AbsenceReasons" />
+          <Property Name="AbsenceReasonsId" Type="Int32" Nullable="false" />
+        </EntityType>
+        <Association Name="AbsenceUserHr">
+          <End Type="MyIntranetDB.Absence" Role="Absence" Multiplicity="*" />
+          <End Type="MyIntranetDB.UserHr" Role="UserHr" Multiplicity="1" />
+          <ReferentialConstraint>
+            <Principal Role="UserHr">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Absence">
+              <PropertyRef Name="UserHrId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="AbsenceReasons">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <NavigationProperty Name="Absences" Relationship="MyIntranetDB.AbsenceReasonsAbsence" FromRole="AbsenceReasons" ToRole="Absence" />
+          <Property Name="Description" Type="String" Nullable="false" />
+        </EntityType>
+        <Association Name="AbsenceReasonsAbsence">
+          <End Type="MyIntranetDB.AbsenceReasons" Role="AbsenceReasons" Multiplicity="1" />
+          <End Type="MyIntranetDB.Absence" Role="Absence" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AbsenceReasons">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Absence">
+              <PropertyRef Name="AbsenceReasonsId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="UserRoles">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <NavigationProperty Name="User" Relationship="MyIntranetDB.UserRolesUser" FromRole="UserRoles" ToRole="User" />
+          <Property Name="UserId" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Role" Relationship="MyIntranetDB.UserRolesRoles" FromRole="UserRoles" ToRole="Roles" />
+        </EntityType>
+        <EntityType Name="Roles">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <NavigationProperty Name="UserRole" Relationship="MyIntranetDB.UserRolesRoles" FromRole="Roles" ToRole="UserRoles" />
+          <Property Name="RoleName" Type="String" Nullable="false" />
+          <NavigationProperty Name="AppSection" Relationship="MyIntranetDB.RolesAppSection" FromRole="Roles" ToRole="AppSection" />
+          <Property Name="AppSectionId" Type="Int32" Nullable="false" />
+        </EntityType>
+        <Association Name="UserRolesUser">
+          <End Type="MyIntranetDB.UserRoles" Role="UserRoles" Multiplicity="*" />
+          <End Type="MyIntranetDB.User" Role="User" Multiplicity="1" />
+          <ReferentialConstraint>
+            <Principal Role="User">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="UserRoles">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="UserRolesRoles">
+          <End Type="MyIntranetDB.UserRoles" Role="UserRoles" Multiplicity="1" />
+          <End Type="MyIntranetDB.Roles" Role="Roles" Multiplicity="1" />
+        </Association>
+        <Association Name="RolesAppSection">
+          <End Type="MyIntranetDB.Roles" Role="Roles" Multiplicity="*" />
+          <End Type="MyIntranetDB.AppSection" Role="AppSection" Multiplicity="1" />
+          <ReferentialConstraint>
+            <Principal Role="AppSection">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Roles">
+              <PropertyRef Name="AppSectionId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+    <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="MyIntranetDBStoreContainer" CdmEntityContainer="MyIntranetEntities">
+    <EntitySetMapping Name="Departments">
+      <EntityTypeMapping TypeName="IsTypeOf(MyIntranetDB.Department)">
+        <MappingFragment StoreEntitySet="Departments">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Users">
+      <EntityTypeMapping TypeName="IsTypeOf(MyIntranetDB.User)">
+        <MappingFragment StoreEntitySet="Users">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="FirstName" ColumnName="FirstName" />
+          <ScalarProperty Name="LastName" ColumnName="LastName" />
+          <ScalarProperty Name="DepartmentId" ColumnName="DepartmentId" />
+          <ScalarProperty Name="Gender" ColumnName="Gender" />
+          <ScalarProperty Name="Title" ColumnName="Title" />
+          <ScalarProperty Name="DateOfBirth" ColumnName="DateOfBirth" />
+          <ScalarProperty Name="UserName" ColumnName="UserName" />
+          <ScalarProperty Name="Active" ColumnName="Active" />
+          <ScalarProperty Name="DateStarted" ColumnName="DateStarted" />
+          <ScalarProperty Name="DateLeft" ColumnName="DateLeft" />
+          <ScalarProperty Name="DateLastLogin" ColumnName="DateLastLogin" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="UserComms">
+      <EntityTypeMapping TypeName="IsTypeOf(MyIntranetDB.UserComms)">
+        <MappingFragment StoreEntitySet="UserComms">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Extension" ColumnName="Extension" />
+          <ScalarProperty Name="DDI" ColumnName="DDI" />
+          <ScalarProperty Name="Email" ColumnName="Email" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="UserHrs">
+      <EntityTypeMapping TypeName="IsTypeOf(MyIntranetDB.UserHr)">
+        <MappingFragment StoreEntitySet="UserHrs">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="ContractedHours" ColumnName="ContractedHours" />
+          <ScalarProperty Name="Salary" ColumnName="Salary" />
+          <ScalarProperty Name="ShiftPattern" ColumnName="ShiftPattern" />
+          <ScalarProperty Name="LeaveThisYear" ColumnName="LeaveThisYear" />
+          <ScalarProperty Name="LeaveNextYear" ColumnName="LeaveNextYear" />
+          <ScalarProperty Name="LeaveSupervisor" ColumnName="LeaveSupervisor" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="LeaveRequests">
+      <EntityTypeMapping TypeName="IsTypeOf(MyIntranetDB.LeaveRequest)">
+        <MappingFragment StoreEntitySet="LeaveRequests">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="StartDate" ColumnName="StartDate" />
+          <ScalarProperty Name="EndDate" ColumnName="EndDate" />
+          <ScalarProperty Name="StartHalfDay" ColumnName="StartHalfDay" />
+          <ScalarProperty Name="EndHalfDay" ColumnName="EndHalfDay" />
+          <ScalarProperty Name="HrApproved" ColumnName="HrApproved" />
+          <ScalarProperty Name="SupervisorApproved" ColumnName="SupervisorApproved" />
+          <ScalarProperty Name="DateRequested" ColumnName="DateRequested" />
+          <ScalarProperty Name="Days" ColumnName="Days" />
+          <ScalarProperty Name="UserHrId" ColumnName="UserHrId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="OfficeClosures">
+      <EntityTypeMapping TypeName="IsTypeOf(MyIntranetDB.OfficeClosure)">
+        <MappingFragment StoreEntitySet="OfficeClosures">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Date" ColumnName="Date" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="BankHoliday" ColumnName="BankHoliday" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="UserSocials">
+      <EntityTypeMapping TypeName="IsTypeOf(MyIntranetDB.UserSocial)">
+        <MappingFragment StoreEntitySet="UserSocials">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Fact" ColumnName="Fact" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Configs">
+      <EntityTypeMapping TypeName="IsTypeOf(MyIntranetDB.Config)">
+        <MappingFragment StoreEntitySet="Configs">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="Value" ColumnName="Value" />
+          <ScalarProperty Name="AppSectionId" ColumnName="AppSectionId" />
+          <ScalarProperty Name="Description" ColumnName="Description" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="AppSections">
+      <EntityTypeMapping TypeName="IsTypeOf(MyIntranetDB.AppSection)">
+        <MappingFragment StoreEntitySet="AppSections">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="UserHrDependencies">
+      <EntityTypeMapping TypeName="IsTypeOf(MyIntranetDB.UserHrDependencies)">
+        <MappingFragment StoreEntitySet="UserHrDependencies">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="UserHrId" ColumnName="UserHrId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Absences">
+      <EntityTypeMapping TypeName="IsTypeOf(MyIntranetDB.Absence)">
+        <MappingFragment StoreEntitySet="Absences">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="UserHrId" ColumnName="UserHrId" />
+          <ScalarProperty Name="StartDate" ColumnName="StartDate" />
+          <ScalarProperty Name="EndDate" ColumnName="EndDate" />
+          <ScalarProperty Name="Days" ColumnName="Days" />
+          <ScalarProperty Name="AbsenceReasonsId" ColumnName="AbsenceReasonsId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="AbsenceReasons">
+      <EntityTypeMapping TypeName="IsTypeOf(MyIntranetDB.AbsenceReasons)">
+        <MappingFragment StoreEntitySet="AbsenceReasons">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Description" ColumnName="Description" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="UserRoles">
+      <EntityTypeMapping TypeName="IsTypeOf(MyIntranetDB.UserRoles)">
+        <MappingFragment StoreEntitySet="UserRoles">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="UserId" ColumnName="UserId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Roles">
+      <EntityTypeMapping TypeName="IsTypeOf(MyIntranetDB.Roles)">
+        <MappingFragment StoreEntitySet="Roles">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="RoleName" ColumnName="RoleName" />
+          <ScalarProperty Name="AppSectionId" ColumnName="AppSectionId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <AssociationSetMapping Name="UserHrUser" TypeName="MyIntranetDB.UserHrUser" StoreEntitySet="UserHrs">
+      <EndProperty Name="User">
+        <ScalarProperty Name="Id" ColumnName="User_Id" />
+      </EndProperty>
+      <EndProperty Name="UserHr">
+        <ScalarProperty Name="Id" ColumnName="Id" />
+      </EndProperty>
+    </AssociationSetMapping>
+    <AssociationSetMapping Name="UserSocialUser" TypeName="MyIntranetDB.UserSocialUser" StoreEntitySet="UserSocials">
+      <EndProperty Name="User">
+        <ScalarProperty Name="Id" ColumnName="User_Id" />
+      </EndProperty>
+      <EndProperty Name="UserSocial">
+        <ScalarProperty Name="Id" ColumnName="Id" />
+      </EndProperty>
+    </AssociationSetMapping>
+    <AssociationSetMapping Name="UserCommsUser" TypeName="MyIntranetDB.UserCommsUser" StoreEntitySet="UserComms">
+      <EndProperty Name="User">
+        <ScalarProperty Name="Id" ColumnName="User_Id" />
+      </EndProperty>
+      <EndProperty Name="UserComms">
+        <ScalarProperty Name="Id" ColumnName="Id" />
+      </EndProperty>
+    </AssociationSetMapping>
+    <AssociationSetMapping Name="UserHrDependenciesUserHr" TypeName="MyIntranetDB.UserHrDependenciesUserHr" StoreEntitySet="UserHrDependencies">
+      <EndProperty Name="UserHr">
+        <ScalarProperty Name="Id" ColumnName="UserHr_Id" />
+      </EndProperty>
+      <EndProperty Name="UserHrDependencies">
+        <ScalarProperty Name="Id" ColumnName="Id" />
+      </EndProperty>
+    </AssociationSetMapping>
+    <AssociationSetMapping Name="UserRolesRoles" TypeName="MyIntranetDB.UserRolesRoles" StoreEntitySet="UserRoles">
+      <EndProperty Name="Roles">
+        <ScalarProperty Name="Id" ColumnName="Role_Id" />
+      </EndProperty>
+      <EndProperty Name="UserRoles">
+        <ScalarProperty Name="Id" ColumnName="Id" />
+      </EndProperty>
+    </AssociationSetMapping>
+  </EntityContainerMapping>
+</Mapping></edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="False" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

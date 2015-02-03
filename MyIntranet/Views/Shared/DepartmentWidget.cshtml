@@ -1,0 +1,8 @@
+﻿@model List<MyIntranet.Models.Department>
+<ul id="drop1" class="f-dropdown" data-dropdown-content="">
+    <li><a href="@Request.Url">Everyone</a></li>
+    @foreach (MyIntranet.Models.Department d in Model)
+    {
+    <li><a href="@Request.Url/@d.Id">@d.Name</a></li>
+    }
+</ul>
